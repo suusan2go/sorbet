@@ -1887,6 +1887,13 @@ module Kernel
   # except the resulting [`Proc`](https://docs.ruby-lang.org/en/2.7.0/Proc.html)
   # objects check the number of parameters passed when called.
   sig do
+    type_parameters(:Return)
+      .params(
+        blk: T.proc.returns(T.type_parameter(:Return))
+      )
+      .returns(T.proc.returns(T.type_parameter(:Return)))
+  end
+  sig do
     params(
         blk: T.untyped,
     )
