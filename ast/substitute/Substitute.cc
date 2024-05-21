@@ -36,7 +36,8 @@ private:
                     local.localVariable._name = subst.substitute(local.localVariable._name);
                     arg = nullptr;
                 },
-                [&](const UnresolvedIdent &nm) { Exception::raise("UnresolvedIdent remaining after local_vars"); });
+                [&](const UnresolvedIdent &nm) { Exception::raise("UnresolvedIdent remaining after local_vars {}", nm.name.show(ctx)); });
+                // I think rewriter is creating <blk>s
         }
     }
 
