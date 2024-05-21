@@ -12,7 +12,7 @@ public:
         if (!isa_tree<EmptyTree>(original)) {
             if (auto local = ast::cast_tree<Local>(original)) {
                 if (local->localVariable._name != core::Names::blkArg()) {
-                    // <blk>
+                    // local_vars creates a call to super with a synthetic <blk> that has no loc
                     ENFORCE(original.loc().exists(), "location is unset");
                 }
             } else {
